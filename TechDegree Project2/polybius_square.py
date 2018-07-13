@@ -71,3 +71,4 @@ class Polybius(Cipher):
             else:
                 decrypted_word.append(self.square[index_1][index_2])
         return "".join(decrypted_word)
+

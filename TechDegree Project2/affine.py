@@ -51,3 +51,4 @@ class Affine(Cipher):
                 new_index = ((21*(index-self.b))%self.m)
                 decrypted_word.append(self.alpha[new_index])
         return "".join(decrypted_word)
+
