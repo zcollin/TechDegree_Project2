@@ -10,13 +10,13 @@ from ciphers import Cipher
 
 
 class Polybius(Cipher):
-    
+
     def __init__(self):
         """Creates an Instance of the Polybius Square Cipher"""
-        
+
         self.alpha = list(string.ascii_lowercase)
-        
-        #Fills the Polybius Square with the alphabetical values
+
+        # Fills the Polybius Square with the alphabetical values
         self.square = []
         line = []
         for letter in self.alpha:
@@ -27,17 +27,16 @@ class Polybius(Cipher):
                 line = []
             line.append(letter)
         self.square.append(line)
-        
-           
+
     def encrypt(self, text):
         """Encrpyts a given piece of text"""
-        
-        #Removes spaces from the phrase. Causes errors in encryption
+
+        # Removes spaces from the phrase. Causes errors in encryption
         text = text.split(" ")
         text = "".join(text)
         text = text.lower()
         encrypted_word = []
-        
+
         for letter in text:
             try:
                 if letter == "i":
@@ -51,14 +50,13 @@ class Polybius(Cipher):
             else:
                 index_1 = index_1 + 1
                 index_2 = index_2 + 1
-                encrypted_word.append(str(index_1)+ str(index_2))
+                encrypted_word.append(str(index_1) + str(index_2))
                 encrypted_word.append(" ")
         return "".join(encrypted_word)
-        
-        
+
     def decrypt(self, text):
         """Decrpyts a given piece of text"""
-        
+
         decrypted_word = []
         nums = text.split(" ")
         for sequence in nums:

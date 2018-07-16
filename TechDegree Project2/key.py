@@ -10,24 +10,24 @@ from ciphers import Cipher
 
 
 class Keyword(Cipher):
-    
+
     def __init__(self, keyword):
-        """Creates an instance of the Keyword Cipher with the provided keyword"""
-        
-        #Makes sure the key doesn't have repeat letters
-        self.key = "".join([j for i,j in enumerate(keyword) if j not in keyword[:i]])
+        """Creates an instance of the Keyword Cipher with the provided key"""
+
+        # Makes sure the key doesn't have repeat letters
+        self.key = "".join(
+            [j for i, j in enumerate(keyword) if j not in keyword[:i]])
         self.alpha = list(string.ascii_lowercase)
-        
-        #Creates the encrypted alphabelt. Used for encryption and decryption
+
+        # Creates the encrypted alphabelt. Used for encryption and decryption
         self.encrypted_alpha = list(self.key)
         for letter in self.alpha:
             if letter not in self.key:
                 self.encrypted_alpha.append(letter)
-        
-    
-    def encrypt(self, text): 
+
+    def encrypt(self, text):
         """Encrpyts a given piece of text"""
-        
+
         text = text.lower()
         encrypted_word = []
         for letter in text:
@@ -39,10 +39,9 @@ class Keyword(Cipher):
                 encrypted_word.append(self.encrypted_alpha[index])
         return "".join(encrypted_word)
 
-    
     def decrypt(self, text):
         """Decrpyts a given piece of text"""
-        
+
         text = text.lower()
         decrypted_word = []
         for letter in text:
